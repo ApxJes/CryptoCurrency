@@ -59,5 +59,14 @@ class CoinAdapter(
                 isActiveCoin.setTextColor(ContextCompat.getColor(context, R.color.red))
             }
         }
+
+        holder.itemView.setOnClickListener {
+            onClick?.let { it(coin.id) }
+        }
+    }
+
+    private var onClick: ((String) -> Unit)? = null
+    fun onClickListener(listener: (String) -> Unit) {
+        onClick = listener
     }
 }

@@ -1,9 +1,7 @@
 package com.example.cryptocurrency.presentation.coin_details
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cryptocurrency.common.Constants.PARAMETER_COIN_ID
 import com.example.cryptocurrency.common.Resource
 import com.example.cryptocurrency.domain.use_case.get_coin.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,21 +15,14 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-    saveStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(CoinDetailsState())
+    private var _state = MutableStateFlow(CoinDetailsState())
     val state: StateFlow<CoinDetailsState> = _state.asStateFlow()
 
-    init {
-        saveStateHandle.get<String>(PARAMETER_COIN_ID)?.let { coinId ->
-            getCoinDetails(coinId)
-        }
-    }
-
-    private fun getCoinDetails(coinId: String) {
+    fun getCoinDetails(coinId: String) {
         getCoinUseCase(coinId).onEach { result ->
-            when(result) {
+            val newState = when(result) {
                 is Resource.Success -> CoinDetailsState(
                     coin = result.data
                 )
@@ -44,6 +35,8 @@ class CoinDetailsViewModel @Inject constructor(
                     isLoading = true
                 )
             }
+
+            _state.value = newState
         }.launchIn(viewModelScope)
     }
 }

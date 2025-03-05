@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptocurrency.R
 import com.example.cryptocurrency.databinding.FragmentCoinsListBinding
@@ -39,6 +40,7 @@ class CoinsListFragment : Fragment() {
 
         collectState()
         recyclerViewCoinsList()
+        navigatedToCoinDetailsFragment()
 
     }
 
@@ -59,6 +61,13 @@ class CoinsListFragment : Fragment() {
                     Snackbar.make(binding.root, state.error, Snackbar.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun navigatedToCoinDetailsFragment() {
+        coinAdapter.onClickListener {coinId ->
+            val action = CoinsListFragmentDirections.actionCoinsListFragmentToCoinDetailsFragment(coinId)
+            findNavController().navigate(action)
         }
     }
 

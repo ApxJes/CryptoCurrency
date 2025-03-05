@@ -60,7 +60,7 @@ fun CoinDetailsDto.toCoinDetails(): CoinDetails {
         coinId = id,
         name = name,
         description = description,
-        tag = tags.map { it.name },
+        tag = tags,
         symbol = symbol,
         isActive = isActive,
         team = team,
