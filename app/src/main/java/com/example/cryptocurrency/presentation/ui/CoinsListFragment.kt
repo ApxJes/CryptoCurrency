@@ -15,6 +15,7 @@ import com.example.cryptocurrency.presentation.adapter.CoinAdapter
 import com.example.cryptocurrency.presentation.coins_list.CoinsListViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

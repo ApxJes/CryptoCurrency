@@ -17,7 +17,7 @@ class CoinsListViewModel @Inject constructor(
     private val getCoinsUseCase: GetCoinsUseCase
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(CoinsListState())
+    private val _state: MutableStateFlow<CoinsListState> = MutableStateFlow(CoinsListState())
     val state: StateFlow<CoinsListState> = _state.asStateFlow()
 
     init {
@@ -25,7 +25,7 @@ class CoinsListViewModel @Inject constructor(
     }
 
     private fun getCoins() {
-        getCoinsUseCase().onEach {result ->
+        getCoinsUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.value = CoinsListState(

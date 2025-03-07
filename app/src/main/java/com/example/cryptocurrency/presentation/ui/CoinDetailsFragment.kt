@@ -15,6 +15,7 @@ import com.example.cryptocurrency.presentation.adapter.TeamMemberAdapter
 import com.example.cryptocurrency.presentation.coin_details.CoinDetailsViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.buffer
 
 @AndroidEntryPoint
 class CoinDetailsFragment : Fragment() {

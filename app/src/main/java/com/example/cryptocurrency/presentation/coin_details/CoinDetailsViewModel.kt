@@ -17,7 +17,7 @@ class CoinDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
 ): ViewModel() {
 
-    private var _state = MutableStateFlow(CoinDetailsState())
+    private var _state: MutableStateFlow<CoinDetailsState> = MutableStateFlow(CoinDetailsState())
     val state: StateFlow<CoinDetailsState> = _state.asStateFlow()
 
     fun getCoinDetails(coinId: String) {

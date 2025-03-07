@@ -10,7 +10,6 @@
         android:id="@+id/txvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BitCoin"
         android:textSize="20sp"
         android:fontFamily="@font/worksans_bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +21,6 @@
         android:id="@+id/txvSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(BTC)"
         app:layout_constraintStart_toEndOf="@+id/txvName"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,58 +36,71 @@
         app:layout_constraintTop_toBottomOf="@id/txvName"
         android:layout_marginStart="7dp"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view"
         tools:layout_editor_absoluteX="10dp">
 
-        <TextView
-            android:id="@+id/txvCoinDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/worksans_regular"
-            android:text="abcefghijk"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/worksans_bold"
-            android:text="Tags"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txvTag1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/outline_tag"
-            android:padding="5dp"
-            android:text="Type"
-            android:textColor="@color/green"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Team Members"
-            android:textSize="20sp"
-            android:fontFamily="@font/worksans_bold"
-            android:layout_marginTop="10dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rcvTeamMembers"
-            android:layout_marginTop="5dp"
-            tools:listitem="@layout/team_members" />
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txvCoinDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/worksans_regular"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tag"
+                android:fontFamily="@font/worksans_bold"
+                android:textSize="25sp" />
+
+
+            <TextView
+                android:id="@+id/txvTag1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/outline_tag"
+                android:padding="5dp"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/switzer_bold"
+                android:text="Team Members"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/worksans_bold"
+                android:layout_marginTop="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rcvTeamMembers"
+                android:layout_marginTop="5dp"
+                tools:listitem="@layout/team_members" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <ProgressBar
         android:layout_width="wrap_content"
